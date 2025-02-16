@@ -1,5 +1,4 @@
-// src/components/SubjectSelection.js
-import React, { useState } from "react"; // ENSURE useState IS IMPORTED
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -139,7 +138,7 @@ const StartButton = styled.button`
 `;
 
 const SubjectSelection = () => {
-  const [activeFilter, setActiveFilter] = useState("All"); // *** VERIFY useState IS HERE ***
+  const [activeFilter, setActiveFilter] = useState("All"); // State for active filter - IMPORT IS FOR THIS LINE
 
   const subjectsData = [
     {
@@ -400,21 +399,18 @@ const SubjectSelection = () => {
         {filterCategories.map((categoryName) => (
           <FilterButton
             key={categoryName}
-            className={activeFilter === categoryName ? "active" : ""} // *** VERIFY className CONDITIONAL ***
-            onClick={() => setActiveFilter(categoryName)} // *** VERIFY setActiveFilter CALL ***
+            className={activeFilter === categoryName ? "active" : ""}
+            onClick={() => setActiveFilter(categoryName)}
           >
             {categoryName}
           </FilterButton>
         ))}
       </CategoryFilters>
       <SubjectsGrid>
-        {filteredSubjectsData.map(
-          (
-            category // *** VERIFY MAPPING OVER filteredSubjectsData ***
-          ) =>
-            category.subjects.map((subject) => (
-              <SubjectCard key={subject.id} subject={subject} />
-            ))
+        {filteredSubjectsData.map((category) =>
+          category.subjects.map((subject) => (
+            <SubjectCard key={subject.id} subject={subject} />
+          ))
         )}
       </SubjectsGrid>
     </SubjectSelectionContainer>
