@@ -1,116 +1,160 @@
-import React from "react";
+// src/pages/Home.js
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { FaCalculator, FaAtom, FaFlask } from "react-icons/fa";
+import HeroSection from "../components/HeroSection";
+import RecentSubjects from "../components/RecentSubjects";
+import SubjectSelection from "../components/SubjectSelection";
 
-const glow = keyframes`
-  from { box-shadow: 0 0 0px rgba(0, 0, 0, 0); }
-  to { box-shadow: 0 0 8px rgba(74, 144, 226, 0.6); }
-`;
-
-/**
- * Home page displays the landing page for subject selection.
- */
 const Home = () => {
+  const [accentColor, setAccentColor] = useState("red");
+
   return (
-    <HomeContainer>
-      <Title>Welcome to the Quiz App</Title>
-      <Subtitle>Select a subject to begin:</Subtitle>
-      <ButtonGroup>
-        <SubjectLink to="/quiz/math">
-          <SubjectButton>
-            <FaCalculator size={30} />
-            <span>Math</span>
-          </SubjectButton>
-        </SubjectLink>
-        <SubjectLink to="/quiz/physics">
-          <SubjectButton>
-            <FaAtom size={30} />
-            <span>Physics</span>
-          </SubjectButton>
-        </SubjectLink>
-        <SubjectLink to="/quiz/chemistry">
-          <SubjectButton>
-            <FaFlask size={30} />
-            <span>Chemistry</span>
-          </SubjectButton>
-        </SubjectLink>
-      </ButtonGroup>
-      <StyledLink to="/dashboard">
-        <DashboardButton>View Dashboard</DashboardButton>
-      </StyledLink>
+    <HomeContainer accentColor={accentColor}>
+      <HeroSection setAccentColor={setAccentColor} />
+      <RecentSubjects />
+      <SubjectSelection />
+
+      <SubjectSection>
+        {" "}
+        {/* SubjectSection (remains - To be Removed) */}
+        <SectionTitle>All Subjects (Old - To be Removed)</SectionTitle>
+        <SubjectGrid>
+          <SubjectCard
+            to="/quiz/math"
+            subject="Math"
+            icon={<FaCalculator size={40} />}
+          />
+          <SubjectCard
+            to="/quiz/physics"
+            subject="Physics"
+            icon={<FaAtom size={40} />}
+          />
+          <SubjectCard
+            to="/quiz/chemistry"
+            subject="Chemistry"
+            icon={<FaFlask size={40} />}
+          />
+          {/* Add more SubjectCard components here for other subjects */}
+        </SubjectGrid>
+      </SubjectSection>
+
+      <DashboardLinkSection>
+        <StyledLink to="/dashboard">
+          <DashboardButton>View Dashboard</DashboardButton>
+        </StyledLink>
+      </DashboardLinkSection>
     </HomeContainer>
   );
 };
 
 export default Home;
 
+// --- Reusable Subject Card Component (Old - To be Removed) ---
+const SubjectCard = ({ to, subject, icon }) => (
+  <SubjectLink to={to}>
+    <Card className="card">
+      <IconContainer>{icon}</IconContainer>
+      <SubjectName>{subject}</SubjectName>
+      <StartButton>Start Quiz</StartButton>
+    </Card>
+  </SubjectLink>
+);
+
+// --- Styled Components ---
 const HomeContainer = styled.div`
-  text-align: center;
-  padding: ${({ theme }) => theme.padding};
-`;
-
-const Title = styled.h1`
-  font-size: 2.2rem;
-  color: ${({ theme }) => theme.primary};
-  margin-bottom: 10px;
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.2rem;
-  color: ${({ theme }) => theme.text};
-  margin-bottom: 30px;
-`;
-
-const ButtonGroup = styled.div`
+  padding: ${({ theme }) => theme.padding} 30px; /* Added horizontal padding to HomeContainer */
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px; /* Added max-width to control page width */
+  margin: 0 auto; /* Center the HomeContainer on the page */
+`;
+
+const SubjectSection = styled.section`
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 960px;
+  scroll-margin-top: 100px;
+`;
+SubjectSection.defaultProps = { id: "subject-section" };
+
+const SectionTitle = styled.h2`
+  font-size: 1.8rem;
+  color: ${({ theme }) => theme.primary};
+  text-align: center;
+  margin-bottom: 25px;
+`;
+
+const SubjectGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  justify-items: center;
 `;
 
 const SubjectLink = styled(Link)`
   text-decoration: none;
+  display: block;
+  width: 100%;
 `;
 
-const SubjectButton = styled.div`
+const Card = styled.div`
+  /* Reusing .card class from GlobalStyles for base card styling */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  background: ${({ theme }) => theme.cardBackground};
-  padding: 20px;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  width: 120px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
 
   &:hover {
-    transform: translateY(-4px);
-    animation: ${glow} 0.5s alternate infinite;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
   }
+`;
 
-  span {
-    font-size: 1rem;
-    font-weight: 600;
+const IconContainer = styled.div`
+  margin-bottom: 15px;
+  color: ${({ theme }) => theme.primary};
+`;
+
+const SubjectName = styled.h3`
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.text};
+`;
+
+const StartButton = styled.button`
+  background: ${({ theme }) => theme.primary};
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.primaryHover};
   }
+`;
+
+const DashboardLinkSection = styled.section`
+  margin-top: 30px;
+  text-align: center;
 `;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  display: inline-block;
 `;
 
 const DashboardButton = styled.button`
-  margin-top: 30px;
-  background: ${({ theme }) => theme.success};
-  color: #fff;
-  padding: 12px 30px;
-  border: none;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  transition: background 0.2s;
+  background: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.text};
 
   &:hover {
-    background: ${({ theme }) => theme.successHover};
+    background: ${({ theme }) => theme.accentHover};
+    color: #fff;
   }
 `;
