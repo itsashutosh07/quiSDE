@@ -1,4 +1,4 @@
-# Quiz App
+# QuiSDE : A Modern Learning App for Software Development Engineers
 
 A beautifully designed interactive quiz app with a clean, minimal, and engaging interface—perfect for self-assessment and quick learning sessions!
 
