@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuiSDE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/f3d8e2f144.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./quiz-app-logo.png" alt="QuiSDE logo" /> <span class="title"> QuiSDE</span>
+      </div>
+      <div class="user-controls">
+        <div class="user-controls-item">
+          <!-- <span>Dashboard</span>  -->
+          <img src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/d83131/external-data-analytics-web-smashingstocks-glyph-smashing-stocks" alt="Dashboard">
+        </div>
+        <div class="user-controls-item">
+          <!-- <span>Theme</span>  -->
+          <i class="fas fa-sun"></i>
+        </div>
+        <div class="user-controls-item">
+          <!-- <span>Controls</span>  -->
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Master Any Subject</h1>
+        <p>
+          Choose between interactive Quizzes or Flash Cards to enhance your
+          learning experience.
+        </p>
+        <div class="button-group">
+          <button class="btn btn-primary">Start Quiz</button>
+          <button class="btn btn-secondary">Try Flash Cards</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="recent-subjects">
+      <h2>Recent Subjects:</h2>
+      <div class="subject-card-container">
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/ios-filled/d83131/database" alt="Database Management Systems">
+              </div>
+              <h3>Database Management Systems</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 35 secs ago</span><span class="separator-dot">•</span><span>Score: 92%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/d83131/external-computer-networking-digital-economy-business-flatart-icons-outline-flatarticons" alt="Computer Networks">
+              </div>
+              <h3>Computer Networks</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 16 mins ago</span><span class="separator-dot">•</span><span>Score: 85%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/external-yogi-aprelliyanto-glyph-yogi-aprelliyanto/d83131/external-programming-website-development-yogi-aprelliyanto-glyph-yogi-aprelliyanto" alt="Design and analysis of algorithms">
+              </div>
+              <h3>Design & Analysis of Algorithms</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 5 hours ago</span><span class="separator-dot">•</span><span>Score: 90%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/ios-filled/d83131/genealogy" alt="Data structures and algorithms">
+              </div>
+              <h3>Data Structures & Algorithms</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 18 hours ago</span><span class="separator-dot">•</span><span>Score: 82%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/external-solidglyph-m-oki-orlando/d83131/external-Neural-Network-artificial-intelligence-solidglyph-m-oki-orlando" alt="Neural network">
+              </div>
+              <h3>Deep Learning</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 2 days ago</span><span class="separator-dot">•</span><span>Score: 96%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/ios-filled/d83131/cloud-computing" alt="Cloud Computing">
+              </div>
+              <h3>Cloud Computing</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 5 days ago</span><span class="separator-dot">•</span><span>Score: 92%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/ios-filled/d83131/windows-logo" alt="Operating Systems">
+              </div>
+              <h3>Operating Systems</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 2 weeks ago</span><span class="separator-dot">•</span><span>Score: 92%</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="subject-card">
+          <div class="subject-card-content">
+            <div class="subject-card-title">
+              <div class="subject-card-icon">
+                <img src="https://img.icons8.com/glyph-neue/d83131/laptop-coding" alt="Operating Systems">
+              </div>
+              <h3>Object Oriented Programming</h3>
+            </div>
+            <div class="subject-card-text">
+              <p><span>Last: 12 weeks ago</span><span class="separator-dot">•</span><span>Score: 100%</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters">
+      <div class="filter-buttons">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Core</button>
+        <button class="filter-btn">Advanced</button>
+        <button class="filter-btn">Machine Learning</button>
+        <button class="filter-btn">Software Engineering</button>
+        <button class="filter-btn">Misc</button>
+      </div>
+    </section>
+
+    <section class="all-subjects">
+      <h2>All Subjects:</h2>
+      <div class="subject-grid">
+        <div class="subject-item">
+          <div class="subject-image-container">
+             <img
+            src="./subject-placeholder-dark.jpeg"
+            alt="Data Structures & Algorithms"
+          />
+          </div>
+          <div class="subject-text-container">
+              <h3>Data Structures & Algorithms</h3>
+              <p>
+                Master the fundamentals of data organization and algorithm design.
+              </p>
+              <div class="subject-footer">
+                <p class="quiz-count">25 quizzes available</p>
+                <button class="btn btn-start">Start</button>
+              </div>
+          </div>
+        </div>
+        <div class="subject-item">
+          <div class="subject-image-container">
+          <img
+            src="./subject-placeholder-dark.jpeg"
+            alt="Object Oriented Programming"
+          />
+           </div>
+          <div class="subject-text-container">
+            <h3>Object Oriented Programming</h3>
+          <p>Explore OOP principles and create robust, modular code.</p>
+          <div class="subject-footer">
+            <p class="quiz-count">30 quizzes available</p>
+            <button class="btn btn-start">Start</button>
+          </div>
+          </div>
+        </div>
+        <div class="subject-item">
+          <div class="subject-image-container">
+            <img src="./subject-placeholder-dark.jpeg" alt="Operating Systems" />
+          </div>
+
+          <div class="subject-text-container">
+             <h3>Operating Systems</h3>
+          <p>
+            Understand OS concepts and how software interacts with hardware.
+          </p>
+          <div class="subject-footer">
+            <p class="quiz-count">20 quizzes available</p>
+            <button class="btn btn-start">Start</button>
+          </div>
+          </div>
+        </div>
+        <div class="subject-item">
+           <div class="subject-image-container">
+          <img
+            src="./subject-placeholder-dark.jpeg"
+            alt="Database Management Systems"
+          />
+           </div>
+           <div class="subject-text-container">
+          <h3>Database Management Systems</h3>
+          <p>Learn to design, implement, and manage efficient databases.</p>
+          <div class="subject-footer">
+            <p class="quiz-count">18 quizzes available</p>
+            <button class="btn btn-start">Start</button>
+          </div>
+           </div>
+        </div>
+        <div class="subject-item">
+          <div class="subject-image-container">
+          <img src="./subject-placeholder-dark.jpeg" alt="Computer Networks" />
+          </div>
+          <div class="subject-text-container">
+            <h3>Computer Networks</h3>
+          <p>Dive into network protocols, architectures, and communication.</p>
+          <div class="subject-footer">
+            <p class="quiz-count">19 quizzes available</p>
+            <button class="btn btn-start">Start</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo">
+      <img src="./quiz-app-logo.png" alt="QuiSDE logo" /> <span class="title"> QuiSDE</span>
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </footer>
+  </body>
+</html>

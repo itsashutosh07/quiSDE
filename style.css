@@ -1,0 +1,696 @@
+/* style.css */
+
+/* Reset and Basic Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Kode Mono", monospace;
+  background-color: #f4f6fa; /* Light grey background */
+  color: #333; /* Dark grey text */
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure body takes at least full viewport height */
+}
+
+p {
+  font-size: 0.9rem; /* Slightly larger base paragraph size */
+  margin-bottom: 0.8rem; /* Add some default spacing below paragraphs */
+}
+
+button {
+  font-family: "Kode Mono", monospace;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1.15rem; /* Base font size for header elements */
+  position: sticky; /* Keep header visible on scroll */
+  top: 0;
+  z-index: 100; /* Ensure header stays above other content */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: #d83131; /* Primary red color */
+  font-weight: bold;
+  text-decoration: none; /* Remove underline if logo were a link */
+}
+
+.logo img {
+  width: 2.5rem; /* Slightly larger logo */
+  height: 2.5rem;
+  margin-right: 0.5rem;
+}
+
+.title {
+  margin-left: 5px; /* Reduced space as img has margin */
+  font-weight: 700; /* Bolder title */
+  font-size: 1.5rem; /* Larger title font */
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Spacing between control items */
+}
+
+.user-controls-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #d83131; /* Red color for icons */
+}
+
+.user-controls-item img {
+  width: 1.8rem; /* Consistent icon size */
+  height: 1.8rem;
+  filter: invert(25%) sepia(84%) saturate(3496%) hue-rotate(347deg) brightness(87%) contrast(95%); /* Apply red color to icon */
+}
+
+.user-controls-item i {
+  font-size: 1.5rem; /* Consistent icon font size */
+  color: #d83131;
+}
+
+/* Remove commented-out spans or style if needed */
+/* .user-controls-item span {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+} */
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)),
+    url("./hero-background-dark.png");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: left; /* Align text to the left */
+  padding: 6rem 4rem; /* More vertical and horizontal padding */
+  margin-bottom: 2rem;
+}
+
+.hero-content {
+  max-width: 800px; /* Limit content width */
+  margin: 0 auto 0 0; /* Align content to the left, auto margin right */
+}
+
+.hero h1 {
+  font-size: 3.5rem; /* Larger heading */
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.3rem; /* Larger paragraph */
+  margin-bottom: 2.5rem; /* More space before buttons */
+  max-width: 600px; /* Prevent text from being too wide */
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+  gap: 1rem; /* Space between buttons */
+}
+
+.btn {
+  padding: 0.9rem 1.8rem; /* Button padding */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-transform: uppercase; /* Uppercase button text */
+  letter-spacing: 1px; /* Add letter spacing */
+}
+
+.btn:active {
+  transform: scale(0.98); /* Slight shrink on click */
+}
+
+.btn-primary {
+  background-color: #d83131;
+  color: #fff;
+  border: 2px solid #d83131; /* Add border */
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #d83131;
+  border: 2px solid #fff; /* Add border */
+}
+
+.btn-primary:hover {
+  background-color: #b72828; /* Darker red on hover */
+  border-color: #b72828;
+}
+
+.btn-secondary:hover {
+  background-color: #eee; /* Slight grey on hover */
+  border-color: #eee;
+}
+
+
+/* Recent Subjects Section - Updated Rules */
+.recent-subjects {
+  padding: 2rem 4rem; /* More horizontal padding */
+  margin-bottom: 2rem; /* Adjusted margin */
+}
+
+.recent-subjects h2 {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-size: 1.8rem; /* Larger section heading */
+  color: #444; /* Slightly darker heading color */
+}
+
+.subject-card-container {
+  display: flex;
+  gap: 1.5rem; /* Space between cards */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-y: visible; /* Allow vertical overflow */
+  padding-bottom: 1rem; /* Add padding for scrollbar visibility */
+  padding-top: 10px; /* Space for card to move up into */
+  /* Remove wrap to keep cards in a single row for scrolling */
+  /* flex-wrap: wrap; */
+}
+
+/* Style scrollbar for webkit browsers */
+.subject-card-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.subject-card-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.subject-card-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.subject-card-container::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.subject-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem; /* Keep padding */
+  width: 275px; /* UPDATED width */
+  min-height: 100px; /* Ensure minimum height for centering */
+  display: flex; /* Make card a flex container to center its content */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; /* Added for z-index context */
+  z-index: 1; /* Base z-index */
+}
+
+.subject-card:hover {
+    transform: translateY(-5px); /* Lift card slightly on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2; /* Ensure hovered card is visually on top */
+}
+
+.subject-card-content {
+  /* Re-adding display:flex as block layout might not work as expected with gap */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Keep gap between title and text */
+}
+
+.subject-card-title {
+  display: flex;
+  align-items: center; /* Vertically align icon and title */
+  gap: 0.8rem; /* Space between icon and title */
+}
+
+.subject-card-icon img {
+  height: 1.8rem;
+  width: 1.8rem;
+  /* Red color already applied via URL - no filter needed here */
+}
+
+.subject-card-title h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.1rem;
+  font-weight: 600; /* Slightly bolder */
+  color: #333;
+  line-height: 1.3; /* Add line-height for multi-line titles */
+}
+
+.subject-card-text {
+  text-align: left; /* Keep text alignment */
+  /* Removed flex-grow: 1 as it's not needed here */
+}
+
+.subject-card-text p {
+  margin: 0; /* Remove default margins */
+  display: flex; /* Use Flexbox for positioning spans */
+  justify-content: space-between; /* Push first/last spans to edges */
+  align-items: center; /* Align items vertically */
+  width: 100%; /* Ensure p takes full width */
+  font-size: 0.8rem; /* Adjust font size if needed */
+  color: #666; /* Lighter color for details */
+}
+
+/* Style the dedicated separator span */
+.separator-dot {
+  color: #bbb; /* Make the dot a lighter grey */
+  font-weight: bold; /* Make dot slightly bolder */
+  margin: 0 0.4em; /* Add small horizontal space around the dot */
+  /* No need for display: inline-block or vertical-align as it's inline text */
+}
+
+
+/* Filters Section */
+.filters {
+  display: flex;
+  justify-content: flex-start; /* Align filters to the left */
+  align-items: center;
+  padding: 1rem 4rem; /* More horizontal padding */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+  margin-bottom: 2rem;
+  border-top: 1px solid #eee; /* Separator line */
+  border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  gap: 0.8rem; /* Space between filter buttons */
+}
+
+.filter-btn {
+  background: #f0f0f0; /* Light grey background */
+  border: 1px solid #e0e0e0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px; /* Pill shape */
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555; /* Darker grey text */
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.filter-btn:hover {
+  background-color: #e0e0e0;
+  border-color: #d0d0d0;
+  color: #333;
+}
+
+.filter-btn.active {
+  color: #fff;
+  background-color: #d83131;
+  border-color: #d83131;
+  font-weight: 600;
+}
+
+/* All Subjects Section */
+.all-subjects {
+  padding: 2rem 4rem; /* More horizontal padding */
+  flex-grow: 1; /* Allow this section to grow and push footer down */
+}
+
+.all-subjects h2 {
+  margin-bottom: 2rem; /* More space below heading */
+  text-align: left;
+  font-size: 1.8rem;
+  color: #444;
+}
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Responsive grid */
+  gap: 2rem; /* Space between grid items */
+}
+
+.subject-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Important for border-radius on image */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subject-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.subject-image-container {
+  width: 100%;
+  height: 180px; /* Fixed height for image container */
+  overflow: hidden;
+}
+
+.subject-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container */
+  display: block; /* Remove potential bottom space */
+}
+
+.subject-text-container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow text container to grow */
+}
+
+.subject-text-container h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* Updated selector for paragraph inside text container */
+.subject-text-container > p {
+  font-size: 0.9rem;
+  color: #666;
+  flex-grow: 1; /* Allow paragraph to take available space */
+  margin-bottom: 1rem; /* Space before footer */
+}
+
+.subject-footer {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  justify-content: space-between;
+  margin-top: auto; /* Push footer to the bottom of the card */
+  border-top: 1px solid #f0f0f0; /* Separator line */
+  padding-top: 1rem; /* Space above footer elements */
+}
+
+.quiz-count {
+  color: #d83131;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ADDED: Remove margin from quiz count paragraph */
+.subject-footer .quiz-count {
+    margin: 0;
+}
+
+.btn-start {
+  background-color: #d83131;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-start:hover {
+    background-color: #b72828; /* Darker red on hover */
+}
+.btn-start:active {
+    transform: scale(0.98);
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem; /* More padding */
+  background-color: #333; /* Dark footer background */
+  color: #ccc; /* Light text color */
+  margin-top: 3rem; /* Ensure space above footer */
+  border-top: 3px solid #d83131; /* Red top border */
+}
+
+footer .footer-logo {
+  display: flex;
+  align-items: center;
+  color: #fff; /* White logo text */
+  font-weight: bold;
+}
+
+footer .footer-logo .title {
+    color: #fff; /* Ensure title is white */
+}
+
+footer img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+  filter: brightness(0) invert(1); /* Make logo image white */
+}
+
+.footer-links a {
+  color: #ccc; /* Light link color */
+  text-decoration: none;
+  margin-left: 1.5rem; /* More space between links */
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #fff; /* White on hover */
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 5rem 3rem;
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
+    .recent-subjects, .filters, .all-subjects, footer {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    .subject-grid {
+       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust min width */
+    }
+    .subject-card {
+      min-height: 95px; /* Adjust min-height for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0.8rem 1.5rem;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    justify-content: center; /* Center items when wrapped */
+    gap: 0.5rem;
+  }
+  .title {
+      font-size: 1.3rem;
+  }
+  .user-controls {
+      gap: 1rem;
+      margin-top: 0.5rem; /* Add space if header wraps */
+  }
+   .user-controls-item i, .user-controls-item img {
+      font-size: 1.3rem;
+      width: 1.5rem;
+      height: 1.5rem;
+   }
+
+  .hero {
+    padding: 4rem 1.5rem;
+    text-align: center; /* Center text on smaller screens */
+  }
+  .hero-content {
+      margin: 0 auto; /* Center content block */
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+      font-size: 1.1rem;
+      max-width: none; /* Allow full width */
+  }
+  .button-group {
+    justify-content: center; /* Center buttons */
+  }
+  .btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+  }
+
+  .recent-subjects, .filters, .all-subjects, footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .recent-subjects h2, .all-subjects h2 {
+      font-size: 1.6rem;
+      text-align: center; /* Center headings */
+  }
+
+  .subject-card-container {
+      justify-content: flex-start; /* Keep left align for scroll */
+  }
+  .subject-card {
+      width: 240px; /* Adjust width for tablet view */
+      min-height: 90px; /* Adjust min-height */
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: center; /* Center filter buttons */
+    gap: 1rem; /* Space between button group and other potential filters */
+  }
+  .filter-buttons {
+      justify-content: center;
+      gap: 0.6rem;
+  }
+   .filter-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+   }
+
+  .subject-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 1.5rem;
+  }
+  .subject-item {
+      max-width: 90%; /* Limit width but allow flexibility */
+      margin: 0 auto; /* Center single column items */
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem; /* Space between logo and links */
+    padding: 1.5rem;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap; /* Allow links to wrap */
+    justify-content: center;
+    gap: 0.5rem 1rem; /* Row and column gap */
+  }
+  .footer-links a {
+    margin-left: 0; /* Remove left margin */
+  }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.8rem 1rem;
+    }
+    .logo img {
+        width: 2rem;
+        height: 2rem;
+    }
+    .title {
+        font-size: 1.2rem;
+    }
+    .user-controls {
+      gap: 0.8rem;
+    }
+    .user-controls-item i, .user-controls-item img {
+      font-size: 1.2rem;
+      width: 1.3rem;
+      height: 1.3rem;
+   }
+
+   .hero {
+       padding: 3rem 1rem;
+   }
+   .hero h1 {
+       font-size: 2rem;
+   }
+   .hero p {
+       font-size: 1rem;
+       margin-bottom: 1.5rem;
+   }
+   .button-group {
+       flex-direction: column; /* Stack buttons vertically */
+       align-items: center;
+       gap: 0.8rem;
+   }
+   .btn {
+       width: 80%; /* Make buttons wider */
+       text-align: center;
+   }
+
+   .recent-subjects, .filters, .all-subjects, footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+   }
+   .recent-subjects h2, .all-subjects h2 {
+      font-size: 1.4rem;
+   }
+   .subject-card {
+       width: 220px; /* Adjust width for mobile view */
+       min-height: 85px; /* Adjust min-height */
+   }
+   /* Adjust dot separator spacing slightly on smallest screens */
+   .separator-dot {
+       margin: 0 0.3em; /* Slightly smaller margin for mobile */
+   }
+
+   .filter-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+   }
+   .subject-item {
+       max-width: 100%; /* Full width on smallest screens */
+   }
+   .subject-text-container h3 {
+       font-size: 1.1rem;
+   }
+    /* Update selector for paragraph inside text container */
+   .subject-text-container > p {
+       font-size: 0.85rem;
+   }
+   .btn-start {
+       padding: 0.5rem 1rem;
+       font-size: 0.85rem;
+   }
+   .footer-links a {
+       font-size: 0.85rem;
+   }
+
+}
+
+/* Make paragraph selector more specific to avoid affecting others */
+/* This was missed earlier, ensuring only the correct p is targeted */
+.subject-text-container > p {
+  font-size: 0.9rem;
+  color: #666;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+/* Ensure quiz count in footer is also targeted correctly */
+.subject-footer > .quiz-count {
+  color: #d83131;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 0; /* Remove default margins */
+}
