@@ -813,7 +813,34 @@ footer img {
   margin: 0; /* Remove default margins */
 }
 
-/* Premium look for navbar icons */
+/* --- CLEANUP: Remove unnecessary/conflicting navbar icon/profile styles --- */
+
+/* Remove old .user-profile, .profile-avatar, and related overrides */
+header .user-profile,
+header .user-profile:hover,
+header .profile-avatar,
+header .profile-avatar i,
+header .user-controls-item.user-profile .icon-circle i,
+header .user-controls-item.user-profile .icon-circle {
+  background: unset !important;
+  border: unset !important;
+  color: unset !important;
+  box-shadow: unset !important;
+  width: unset !important;
+  height: unset !important;
+  border-radius: unset !important;
+  display: unset !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+  font-size: unset !important;
+  font-family: unset !important;
+  font-weight: unset !important;
+  padding: unset !important;
+  margin: unset !important;
+  transition: unset !important;
+}
+
+/* Keep only the consistent .icon-circle premium look for all icons */
 header .icon-circle {
   width: 2.2rem;
   height: 2.2rem;
@@ -837,18 +864,6 @@ header .user-controls-item:hover .icon-circle,
 header .user-controls-item.active .icon-circle {
   background: linear-gradient(135deg, #fbeaea 60%, #f8dede 100%);
   box-shadow: 0 4px 16px 0 rgba(216, 49, 49, 0.1);
-}
-
-header .user-controls-item.user-profile .icon-circle {
-  background: linear-gradient(
-    135deg,
-    #e0eaff 60%,
-    #f0f6ff 100%
-  ); /* Soft blue for profile */
-}
-
-header .user-controls-item.user-profile .icon-circle i {
-  color: #2563eb; /* Use a blue color for the user icon */
 }
 
 header .user-controls-item span {
