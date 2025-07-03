@@ -28,16 +28,74 @@ button {
 
 /* Header */
 header {
+  background: #f5f6fa !important; /* Light gray for contrast */
+  border-bottom: 2px solid #d83131 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 1.15rem; /* Base font size for header elements */
-  position: sticky; /* Keep header visible on scroll */
-  top: 0;
-  z-index: 100; /* Ensure header stays above other content */
+  padding: 1.2rem 3rem;
+  z-index: 100;
+}
+
+header .user-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.2rem !important;
+}
+
+header .user-controls-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 0.8rem !important;
+  border-radius: 8px !important;
+  background: none !important;
+  border: none !important;
+  font-family: "Kode Mono", monospace !important;
+  font-size: 1rem !important;
+  color: #d83131 !important;
+  transition: background 0.2s, color 0.2s !important;
+  cursor: pointer !important;
+}
+
+header .user-controls-item:hover {
+  background: rgba(216, 49, 49, 0.08) !important;
+  color: #b72828 !important;
+}
+
+header .user-controls-item i {
+  font-size: 1.3rem !important;
+  color: inherit !important;
+}
+
+header .user-profile {
+  background: none !important;
+  border: none !important;
+  padding: 0.5rem 0.8rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+header .profile-avatar {
+  width: 2rem !important;
+  height: 2rem !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+header .profile-avatar i {
+  color: #fff !important;
+  font-size: 1.1rem !important;
+}
+
+header .user-profile span {
+  font-family: inherit !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
 }
 
 .logo {
@@ -63,32 +121,71 @@ header {
 .user-controls {
   display: flex;
   align-items: center;
-  gap: 1.5rem; /* Spacing between control items */
+  gap: 1.5rem;
 }
 
 .user-controls-item {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
   cursor: pointer;
-  color: #d83131; /* Red color for icons */
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-.user-controls-item img {
-  width: 1.8rem; /* Consistent icon size */
-  height: 1.8rem;
-  filter: invert(25%) sepia(84%) saturate(3496%) hue-rotate(347deg) brightness(87%) contrast(95%); /* Apply red color to icon */
+.user-controls-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .user-controls-item i {
-  font-size: 1.5rem; /* Consistent icon font size */
+  font-size: 1.1rem;
   color: #d83131;
 }
 
-/* Remove commented-out spans or style if needed */
-/* .user-controls-item span {
-  margin-left: 0.5rem;
+.user-controls-item span {
+  font-weight: 500;
+}
+
+.user-profile {
+  background: linear-gradient(
+    135deg,
+    rgba(216, 49, 49, 0.1),
+    rgba(216, 49, 49, 0.05)
+  );
+  border: 1px solid rgba(216, 49, 49, 0.2);
+}
+
+.user-profile:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(216, 49, 49, 0.15),
+    rgba(216, 49, 49, 0.1)
+  );
+}
+
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d83131, #b02525);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-avatar i {
+  color: white;
   font-size: 0.9rem;
-} */
+}
 
 /* Hero Section */
 .hero {
@@ -163,7 +260,6 @@ header {
   border-color: #eee;
 }
 
-
 /* Recent Subjects Section - Updated Rules */
 .recent-subjects {
   padding: 2rem 4rem; /* More horizontal padding */
@@ -224,9 +320,9 @@ header {
 }
 
 .subject-card:hover {
-    transform: translateY(-5px); /* Lift card slightly on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    z-index: 2; /* Ensure hovered card is visually on top */
+  transform: translateY(-5px); /* Lift card slightly on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2; /* Ensure hovered card is visually on top */
 }
 
 .subject-card-content {
@@ -278,7 +374,6 @@ header {
   margin: 0 0.4em; /* Add small horizontal space around the dot */
   /* No need for display: inline-block or vertical-align as it's inline text */
 }
-
 
 /* Filters Section */
 .filters {
@@ -339,7 +434,10 @@ header {
 
 .subject-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Responsive grid */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(320px, 1fr)
+  ); /* Responsive grid */
   gap: 2rem; /* Space between grid items */
 }
 
@@ -355,8 +453,8 @@ header {
 }
 
 .subject-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .subject-image-container {
@@ -410,7 +508,7 @@ header {
 
 /* ADDED: Remove margin from quiz count paragraph */
 .subject-footer .quiz-count {
-    margin: 0;
+  margin: 0;
 }
 
 .btn-start {
@@ -427,10 +525,10 @@ header {
   letter-spacing: 0.5px;
 }
 .btn-start:hover {
-    background-color: #b72828; /* Darker red on hover */
+  background-color: #b72828; /* Darker red on hover */
 }
 .btn-start:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 /* Footer */
@@ -453,7 +551,7 @@ footer .footer-logo {
 }
 
 footer .footer-logo .title {
-    color: #fff; /* Ensure title is white */
+  color: #fff; /* Ensure title is white */
 }
 
 footer img {
@@ -478,25 +576,31 @@ footer img {
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    .hero {
-        padding: 5rem 3rem;
-    }
-    .hero h1 {
-        font-size: 3rem;
-    }
-    .hero p {
-        font-size: 1.2rem;
-    }
-    .recent-subjects, .filters, .all-subjects, footer {
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-    .subject-grid {
-       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust min width */
-    }
-    .subject-card {
-      min-height: 95px; /* Adjust min-height for smaller screens */
-    }
+  .hero {
+    padding: 5rem 3rem;
+  }
+  .hero h1 {
+    font-size: 3rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+  }
+  .recent-subjects,
+  .filters,
+  .all-subjects,
+  footer {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .subject-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(280px, 1fr)
+    ); /* Adjust min width */
+  }
+  .subject-card {
+    min-height: 95px; /* Adjust min-height for smaller screens */
+  }
 }
 
 @media (max-width: 768px) {
@@ -507,56 +611,61 @@ footer img {
     gap: 0.5rem;
   }
   .title {
-      font-size: 1.3rem;
+    font-size: 1.3rem;
   }
   .user-controls {
-      gap: 1rem;
-      margin-top: 0.5rem; /* Add space if header wraps */
+    gap: 1rem;
+    margin-top: 0.5rem; /* Add space if header wraps */
   }
-   .user-controls-item i, .user-controls-item img {
-      font-size: 1.3rem;
-      width: 1.5rem;
-      height: 1.5rem;
-   }
+  .user-controls-item i,
+  .user-controls-item img {
+    font-size: 1.3rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 
   .hero {
     padding: 4rem 1.5rem;
     text-align: center; /* Center text on smaller screens */
   }
   .hero-content {
-      margin: 0 auto; /* Center content block */
+    margin: 0 auto; /* Center content block */
   }
   .hero h1 {
     font-size: 2.5rem;
   }
   .hero p {
-      font-size: 1.1rem;
-      max-width: none; /* Allow full width */
+    font-size: 1.1rem;
+    max-width: none; /* Allow full width */
   }
   .button-group {
     justify-content: center; /* Center buttons */
   }
   .btn {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 
-  .recent-subjects, .filters, .all-subjects, footer {
+  .recent-subjects,
+  .filters,
+  .all-subjects,
+  footer {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 
-  .recent-subjects h2, .all-subjects h2 {
-      font-size: 1.6rem;
-      text-align: center; /* Center headings */
+  .recent-subjects h2,
+  .all-subjects h2 {
+    font-size: 1.6rem;
+    text-align: center; /* Center headings */
   }
 
   .subject-card-container {
-      justify-content: flex-start; /* Keep left align for scroll */
+    justify-content: flex-start; /* Keep left align for scroll */
   }
   .subject-card {
-      width: 240px; /* Adjust width for tablet view */
-      min-height: 90px; /* Adjust min-height */
+    width: 240px; /* Adjust width for tablet view */
+    min-height: 90px; /* Adjust min-height */
   }
 
   .filters {
@@ -565,21 +674,21 @@ footer img {
     gap: 1rem; /* Space between button group and other potential filters */
   }
   .filter-buttons {
-      justify-content: center;
-      gap: 0.6rem;
+    justify-content: center;
+    gap: 0.6rem;
   }
-   .filter-btn {
-      padding: 0.5rem 1rem;
-      font-size: 0.85rem;
-   }
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
 
   .subject-grid {
     grid-template-columns: 1fr; /* Single column */
     gap: 1.5rem;
   }
   .subject-item {
-      max-width: 90%; /* Limit width but allow flexibility */
-      margin: 0 auto; /* Center single column items */
+    max-width: 90%; /* Limit width but allow flexibility */
+    margin: 0 auto; /* Center single column items */
   }
 
   footer {
@@ -597,86 +706,95 @@ footer img {
   .footer-links a {
     margin-left: 0; /* Remove left margin */
   }
+
+  .user-controls-item {
+    padding: 0.75rem;
+    gap: 0;
+  }
 }
 
 @media (max-width: 480px) {
-    header {
-        padding: 0.8rem 1rem;
-    }
-    .logo img {
-        width: 2rem;
-        height: 2rem;
-    }
-    .title {
-        font-size: 1.2rem;
-    }
-    .user-controls {
-      gap: 0.8rem;
-    }
-    .user-controls-item i, .user-controls-item img {
-      font-size: 1.2rem;
-      width: 1.3rem;
-      height: 1.3rem;
-   }
+  header {
+    padding: 0.8rem 1rem;
+  }
+  .logo img {
+    width: 2rem;
+    height: 2rem;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .user-controls {
+    gap: 0.8rem;
+  }
+  .user-controls-item i,
+  .user-controls-item img {
+    font-size: 1.2rem;
+    width: 1.3rem;
+    height: 1.3rem;
+  }
 
-   .hero {
-       padding: 3rem 1rem;
-   }
-   .hero h1 {
-       font-size: 2rem;
-   }
-   .hero p {
-       font-size: 1rem;
-       margin-bottom: 1.5rem;
-   }
-   .button-group {
-       flex-direction: column; /* Stack buttons vertically */
-       align-items: center;
-       gap: 0.8rem;
-   }
-   .btn {
-       width: 80%; /* Make buttons wider */
-       text-align: center;
-   }
+  .hero {
+    padding: 3rem 1rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .button-group {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .btn {
+    width: 80%; /* Make buttons wider */
+    text-align: center;
+  }
 
-   .recent-subjects, .filters, .all-subjects, footer {
+  .recent-subjects,
+  .filters,
+  .all-subjects,
+  footer {
     padding-left: 1rem;
     padding-right: 1rem;
-   }
-   .recent-subjects h2, .all-subjects h2 {
-      font-size: 1.4rem;
-   }
-   .subject-card {
-       width: 220px; /* Adjust width for mobile view */
-       min-height: 85px; /* Adjust min-height */
-   }
-   /* Adjust dot separator spacing slightly on smallest screens */
-   .separator-dot {
-       margin: 0 0.3em; /* Slightly smaller margin for mobile */
-   }
+  }
+  .recent-subjects h2,
+  .all-subjects h2 {
+    font-size: 1.4rem;
+  }
+  .subject-card {
+    width: 220px; /* Adjust width for mobile view */
+    min-height: 85px; /* Adjust min-height */
+  }
+  /* Adjust dot separator spacing slightly on smallest screens */
+  .separator-dot {
+    margin: 0 0.3em; /* Slightly smaller margin for mobile */
+  }
 
-   .filter-btn {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
-   }
-   .subject-item {
-       max-width: 100%; /* Full width on smallest screens */
-   }
-   .subject-text-container h3 {
-       font-size: 1.1rem;
-   }
-    /* Update selector for paragraph inside text container */
-   .subject-text-container > p {
-       font-size: 0.85rem;
-   }
-   .btn-start {
-       padding: 0.5rem 1rem;
-       font-size: 0.85rem;
-   }
-   .footer-links a {
-       font-size: 0.85rem;
-   }
-
+  .filter-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .subject-item {
+    max-width: 100%; /* Full width on smallest screens */
+  }
+  .subject-text-container h3 {
+    font-size: 1.1rem;
+  }
+  /* Update selector for paragraph inside text container */
+  .subject-text-container > p {
+    font-size: 0.85rem;
+  }
+  .btn-start {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  .footer-links a {
+    font-size: 0.85rem;
+  }
 }
 
 /* Make paragraph selector more specific to avoid affecting others */
@@ -693,4 +811,55 @@ footer img {
   font-size: 0.8rem;
   font-weight: 500;
   margin: 0; /* Remove default margins */
+}
+
+/* Premium look for navbar icons */
+header .icon-circle {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8dede 60%, #fff0f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(216, 49, 49, 0.04);
+}
+
+header .icon-circle i {
+  color: #d83131;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+header .user-controls-item:hover .icon-circle,
+header .user-controls-item.active .icon-circle {
+  background: linear-gradient(135deg, #fbeaea 60%, #f8dede 100%);
+  box-shadow: 0 4px 16px 0 rgba(216, 49, 49, 0.1);
+}
+
+header .user-controls-item.user-profile .icon-circle {
+  background: linear-gradient(
+    135deg,
+    #e0eaff 60%,
+    #f0f6ff 100%
+  ); /* Soft blue for profile */
+}
+
+header .user-controls-item.user-profile .icon-circle i {
+  color: #2563eb; /* Use a blue color for the user icon */
+}
+
+header .user-controls-item span {
+  color: #b72828;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+header .user-controls-item:hover span,
+header .user-controls-item.active span {
+  color: #d83131;
 }
