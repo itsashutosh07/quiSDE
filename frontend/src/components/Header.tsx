@@ -1,8 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const { authState, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <header>
       <div
@@ -38,15 +46,35 @@ const Header: React.FC = () => {
           </span>
           <span>Theme</span>
         </div>
-        <div
-          className="user-controls-item user-profile"
-          onClick={() => navigate("/profile")}
-        >
-          <span className="icon-circle">
-            <i className="fa-solid fa-user"></i>
-          </span>
-          <span>Profile</span>
-        </div>
+        {authState.isAuthenticated ? (
+          <div
+            className="user-controls-item user-profile"
+            onClick={() => navigate("/profile")}
+          >
+            <span className="icon-circle">
+              <i className="fa-solid fa-user"></i>
+            </span>
+            <span>Profile</span>
+          </div>
+        ) : (
+          <div
+            className="user-controls-item user-profile"
+            onClick={() => navigate("/login")}
+          >
+            <span className="icon-circle">
+              <i className="fa-solid fa-sign-in-alt"></i>
+            </span>
+            <span>Login</span>
+          </div>
+        )}
+        {authState.isAuthenticated && (
+          <div className="user-controls-item" onClick={handleLogout}>
+            <span className="icon-circle">
+              <i className="fa-solid fa-sign-out-alt"></i>
+            </span>
+            <span>Logout</span>
+          </div>
+        )}
       </div>
     </header>
   );
