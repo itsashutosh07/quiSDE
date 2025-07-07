@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.quisde.entity.Quiz;
-import com.quisde.service.QuizService;
 import com.quisde.dto.QuizAttemptRequest;
 import com.quisde.dto.QuizAttemptResponse;
+import com.quisde.dto.QuizDto;
+import com.quisde.entity.Quiz;
+import com.quisde.service.QuizService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +25,7 @@ public class QuizController {
     private final QuizService quizService;
 
     @GetMapping
-    public List<Quiz> getAllQuizzes() {
+    public List<QuizDto> getAllQuizzes() {
         return quizService.getAllQuizzes();
     }
 

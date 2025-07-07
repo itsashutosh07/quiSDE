@@ -5,19 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.quisde.entity.Quiz;
-import com.quisde.entity.Subject;
-import com.quisde.entity.Question;
-import com.quisde.entity.Answer;
-import com.quisde.repository.QuizRepository;
-import com.quisde.repository.SubjectRepository;
-import com.quisde.repository.QuestionRepository;
-import com.quisde.repository.AnswerRepository;
+import com.quisde.dto.AnswerDto;
+import com.quisde.dto.QuestionDto;
 import com.quisde.dto.QuizAttemptRequest;
 import com.quisde.dto.QuizAttemptResponse;
+import com.quisde.dto.QuizDto;
+import com.quisde.entity.Answer;
+import com.quisde.entity.Question;
+import com.quisde.entity.Quiz;
+import com.quisde.entity.Subject;
+import com.quisde.repository.AnswerRepository;
+import com.quisde.repository.QuestionRepository;
+import com.quisde.repository.QuizRepository;
+import com.quisde.repository.SubjectRepository;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +34,11 @@ public class QuizService {
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
 
-    public List<Quiz> getAllQuizzes() {
-        return quizRepository.findAll();
+    public List<QuizDto> getAllQuizzes() {
+        return quizRepository.findAll()
+                .stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
     }
 
     public Optional<Quiz> getQuizById(Long id) {
@@ -41,7 +48,7 @@ public class QuizService {
     public Optional<Quiz> getQuizWithQuestions(Long id) {
         return quizRepository.findById(id).map(quiz -> {
             // Load questions for this quiz
-            List<Question> questions = questionRepository.findByQuizId(id);
+            List<Question> questions = questionRepository.findByQuizIdAndActiveTrue(id);
             quiz.setQuestions(questions);
             return quiz;
         });
@@ -49,7 +56,7 @@ public class QuizService {
 
     public Optional<QuizAttemptResponse> submitQuizAttempt(Long quizId, QuizAttemptRequest request) {
         return quizRepository.findById(quizId).map(quiz -> {
-            List<Question> questions = questionRepository.findByQuizId(quizId);
+            List<Question> questions = questionRepository.findByQuizIdAndActiveTrue(quizId);
             Map<Long, Boolean> questionResults = new HashMap<>();
             int correctAnswers = 0;
             List<String> feedback = new ArrayList<>();
@@ -105,5 +112,62 @@ public class QuizService {
                 ));
             }
         }
+    }
+
+    private QuizDto toDto(Quiz quiz) {
+        return QuizDto.builder()
+                .slug(quiz.getSlug())
+                .title(quiz.getTitle())
+                .difficulty(quiz.getDifficulty())
+                .numQuestions(quiz.getNumQuestions())
+                .subjectSlug(quiz.getSubject().getSlug())
+                .subjectName(quiz.getSubject().getName())
+                .build();
+    }
+
+    public QuizDto getQuizBySlug(String slug) {
+        return quizRepository.findBySlug(slug)
+                .map(this::toDto)
+                .orElse(null);
+    }
+
+    public List<QuestionDto> getQuizQuestions(String quizSlug, String difficulty, int questionCount) {
+        Quiz quiz = quizRepository.findBySlug(quizSlug).orElse(null);
+        if (quiz == null) {
+            return List.of();
+        }
+
+        return questionRepository.findByQuizIdAndDifficultyAndActiveTrue(quiz.getId(), difficulty)
+                .stream()
+                .limit(questionCount)
+                .map(this::toQuestionDto)
+                .collect(Collectors.toList());
+    }
+
+    private QuestionDto toQuestionDto(Question question) {
+        List<AnswerDto> answers = question.getAnswers()
+                .stream()
+                .sorted((a, b) -> Integer.compare(a.getOrderIndex(), b.getOrderIndex()))
+                .map(this::toAnswerDto)
+                .collect(Collectors.toList());
+
+        return QuestionDto.builder()
+                .id(question.getId())
+                .text(question.getText())
+                .type(question.getType())
+                .difficulty(question.getDifficulty())
+                .explanation(question.getExplanation())
+                .answers(answers)
+                .build();
+    }
+
+    private AnswerDto toAnswerDto(Answer answer) {
+        return AnswerDto.builder()
+                .id(answer.getId())
+                .text(answer.getText())
+                .isCorrect(answer.isCorrect())
+                .explanation(answer.getExplanation())
+                .orderIndex(answer.getOrderIndex())
+                .build();
     }
 } 

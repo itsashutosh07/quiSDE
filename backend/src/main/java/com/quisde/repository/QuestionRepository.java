@@ -9,5 +9,6 @@ import com.quisde.entity.Question;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    List<Question> findByQuizId(Long quizId);
+    List<Question> findByQuizIdAndDifficultyAndActiveTrue(Long quizId, String difficulty);
+    List<Question> findByQuizIdAndActiveTrue(Long quizId);
 } 

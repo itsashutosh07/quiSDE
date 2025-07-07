@@ -29,14 +29,15 @@ public class Answer {
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, length = 512)
     private String text;
 
     @Column(nullable = false)
     private boolean isCorrect;
 
-    private String imageUrl;
+    @Column(length = 256)
+    private String explanation;
 
-    @Column(columnDefinition = "TEXT")
-    private String codeBlock;
+    @Column(nullable = false)
+    private int orderIndex; // For ordering answers in multiple choice questions
 } 

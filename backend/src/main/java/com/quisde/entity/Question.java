@@ -1,18 +1,10 @@
 package com.quisde.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "questions")
@@ -27,16 +19,24 @@ public class Question {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "quiz_id", nullable = false)
+    @JsonIgnore
     private Quiz quiz;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false, length = 1024)
     private String text;
 
-    private String imageUrl;
-
-    @Column(columnDefinition = "TEXT")
-    private String codeBlock;
+    @Column(nullable = false)
+    private String type; // "multiple_choice", "true_false", "fill_blank"
 
     @Column(nullable = false)
-    private String difficulty; // Easy, Medium, Hard
+    private String difficulty; // "easy", "medium", "hard"
+
+    @Column(length = 512)
+    private String explanation;
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Answer> answers = new ArrayList<>();
+
+    @Column(nullable = false)
+    private boolean active = true;
 } 
