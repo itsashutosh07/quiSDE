@@ -23,9 +23,6 @@ public class Category {
     @Column(length = 512)
     private String description;
 
-    @Column(length = 7) // Hex color code
-    private String color;
-
     @Column(nullable = false)
     private boolean active = true;
 } 

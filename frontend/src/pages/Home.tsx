@@ -41,7 +41,6 @@ const Home: React.FC = () => {
             name:
               categorySlug.charAt(0).toUpperCase() +
               categorySlug.slice(1).replace(/-/g, " "),
-            color: getCategoryColor(categorySlug),
           })
         );
 
@@ -53,18 +52,6 @@ const Home: React.FC = () => {
       })
       .finally(() => setLoading(false));
   }, []);
-
-  // Helper function to assign colors to categories
-  const getCategoryColor = (categorySlug: string): string => {
-    const colorMap: Record<string, string> = {
-      core: "#d83131",
-      advanced: "#8b5cf6",
-      "machine-learning": "#10b981",
-      "software-engineering": "#f59e0b",
-      misc: "#6b7280",
-    };
-    return colorMap[categorySlug] || "#6b7280";
-  };
 
   // Filter subjects based on active filter
   const filteredSubjects = useMemo(() => {

@@ -17,20 +17,16 @@ import com.quisde.dto.QuizDto;
 import com.quisde.entity.Answer;
 import com.quisde.entity.Question;
 import com.quisde.entity.Quiz;
-import com.quisde.entity.Subject;
 import com.quisde.repository.AnswerRepository;
 import com.quisde.repository.QuestionRepository;
 import com.quisde.repository.QuizRepository;
-import com.quisde.repository.SubjectRepository;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class QuizService {
     private final QuizRepository quizRepository;
-    private final SubjectRepository subjectRepository;
     private final QuestionRepository questionRepository;
     private final AnswerRepository answerRepository;
 
@@ -98,20 +94,6 @@ public class QuizService {
                     .feedback(feedback)
                     .build();
         });
-    }
-
-    @PostConstruct
-    public void seedQuizzes() {
-        if (quizRepository.count() == 0) {
-            List<Subject> subjects = subjectRepository.findAll();
-            for (Subject subject : subjects) {
-                quizRepository.saveAll(List.of(
-                    Quiz.builder().subject(subject).title(subject.getName() + " - Easy Quiz").difficulty("Easy").numQuestions(5).build(),
-                    Quiz.builder().subject(subject).title(subject.getName() + " - Medium Quiz").difficulty("Medium").numQuestions(10).build(),
-                    Quiz.builder().subject(subject).title(subject.getName() + " - Hard Quiz").difficulty("Hard").numQuestions(25).build()
-                ));
-            }
-        }
     }
 
     private QuizDto toDto(Quiz quiz) {
