@@ -724,7 +724,7 @@ header .user-controls-item i {
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  animation: textShimmer var(--shimmer-duration, 6.28318s) linear infinite;
+  animation: textShimmer var(--shimmer-duration, 5s) linear infinite;
 }
 
 @keyframes textShimmer {

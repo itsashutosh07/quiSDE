@@ -44,7 +44,7 @@ const Hero: React.FC<HeroProps> = ({ onModeChange }) => {
         <p>
           <ShinyText
             text="Choose between interactive Quizzes or Flash Cards to enhance your learning experience."
-            speed={6.28318}
+            speed={5}
           />
         </p>
         <div className="button-group">
