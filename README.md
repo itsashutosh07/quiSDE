@@ -1,4 +1,4 @@
-# QuiSDE - Quiz System for Digital Education
+# QuiSDE - Quiz System for Software Development Engineers
 
 A modern, full-stack web application for interactive learning through quizzes, flashcards, and comprehensive subject management. Built with React, Spring Boot, and H2 database.
 
@@ -294,7 +294,7 @@ java -jar target/demo-0.0.1-SNAPSHOT.jar
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## 📝 Support
 
 For support and questions:
 
@@ -314,4 +314,4 @@ For support and questions:
 
 ---
 
-**Built with ❤️ for modern education**
+**Built with ❤️ by Ashutosh Jaiswal**
