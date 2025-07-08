@@ -12,17 +12,17 @@ import "./App.css";
 const App: React.FC = () => {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/quizzes" element={<QuizSelect />} />
-          <Route path="/quiz/:quizId" element={<QuizAttempt />} />
-          <Route path="/demo" element={<DesignDemo />} />
-          {/* Add more routes here as you scaffold more pages */}
-        </Routes>
-      </Router>
+        <Route path="/quizzes" element={<QuizSelect />} />
+        <Route path="/quiz/:quizId" element={<QuizAttempt />} />
+        <Route path="/demo" element={<DesignDemo />} />
+        {/* Add more routes here as you scaffold more pages */}
+      </Routes>
+    </Router>
     </AuthProvider>
   );
 };

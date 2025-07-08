@@ -5,6 +5,9 @@ import ProfileCard from "../components/ProfileCard";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./Profile.css";
+import SubjectPng from "../assets/Subject.png";
+import IconPattern from "../assets/Icon Pattern.png";
+import GrainWebp from "../assets/Grain.webp";
 
 const Profile: React.FC = () => {
   const { authState, logout } = useAuth();
@@ -50,8 +53,10 @@ const Profile: React.FC = () => {
               title={authState.user.title}
               handle={authState.user.handle}
               status={authState.user.status}
-              contactText="Contact Me"
-              avatarUrl={authState.user.avatarUrl}
+              contactText="Share"
+              avatarUrl={SubjectPng}
+              iconUrl={IconPattern}
+              grainUrl={GrainWebp}
               showUserInfo={true}
               enableTilt={true}
               onContactClick={handleContactClick}

@@ -6,16 +6,16 @@ import type {
   OTPVerification,
   User,
 } from "../types/auth";
+import SubjectPng from "../assets/Subject.png";
 
 // Mock user data
 const MOCK_USER: User = {
   id: "1",
   email: "itsashutosh07@gmail.com",
-  name: "Ashutosh D. Jaiswal",
+  name: "Ashutosh Jaiswal",
   title: "Software Engineer",
   handle: "itsashutosh07",
-  avatarUrl:
-    "https://github.com/itsashutosh07/quiSDE/blob/master/Subject.png?raw=true",
+  avatarUrl: SubjectPng,
   status: "Online",
 };
 

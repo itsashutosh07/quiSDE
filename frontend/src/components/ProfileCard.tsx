@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
 import "./ProfileCard.css";
+import SubjectPng from "../assets/Subject.png";
+import IconPattern from "../assets/Icon Pattern.png";
+import GrainWebp from "../assets/Grain.webp";
 
 interface ProfileCardProps {
   avatarUrl: string;
@@ -52,9 +55,9 @@ const easeInOutCubic = (x: number): number =>
   x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
-  avatarUrl = "<Placeholder for avatar URL>",
-  iconUrl = "<Placeholder for icon URL>",
-  grainUrl = "<Placeholder for grain URL>",
+  avatarUrl = SubjectPng,
+  iconUrl = IconPattern,
+  grainUrl = GrainWebp,
   behindGradient,
   innerGradient,
   showBehindGradient = true,
@@ -65,7 +68,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   title = "Software Engineer",
   handle = "javicodes",
   status = "Online",
-  contactText = "Contact",
+  contactText = "Share",
   showUserInfo = true,
   onContactClick,
 }) => {
@@ -308,8 +311,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   onClick={handleContactClick}
                   style={{ pointerEvents: "auto" }}
                   type="button"
-                  aria-label={`Contact ${name || "user"}`}
+                  aria-label={`Share ${name || "user"}`}
                 >
+                  <i
+                    className="fas fa-share-alt"
+                    style={{ marginRight: 6 }}
+                  ></i>
                   {contactText}
                 </button>
               </div>
