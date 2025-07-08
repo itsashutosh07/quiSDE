@@ -8,6 +8,7 @@ import "./Profile.css";
 import SubjectPng from "../assets/Subject.png";
 import IconPattern from "../assets/Icon Pattern.png";
 import GrainWebp from "../assets/Grain.webp";
+import CountUp from "../components/CountUp";
 
 const Profile: React.FC = () => {
   const { authState, logout } = useAuth();
@@ -98,19 +99,56 @@ const Profile: React.FC = () => {
               <h2>Learning Statistics</h2>
               <div className="stats-grid">
                 <div className="stat-item">
-                  <div className="stat-number">25</div>
+                  <div className="stat-number">
+                    <span className="gradient-text">
+                      <CountUp
+                        from={0}
+                        to={25}
+                        duration={1.2}
+                        className="count-up-text"
+                      />
+                    </span>
+                  </div>
                   <div className="stat-label">Quizzes Completed</div>
                 </div>
                 <div className="stat-item">
-                  <div className="stat-number">92%</div>
+                  <div className="stat-number">
+                    <span className="gradient-text">
+                      <CountUp
+                        from={0}
+                        to={92}
+                        duration={1.2}
+                        className="count-up-text"
+                      />
+                      %
+                    </span>
+                  </div>
                   <div className="stat-label">Average Score</div>
                 </div>
                 <div className="stat-item">
-                  <div className="stat-number">8</div>
+                  <div className="stat-number">
+                    <span className="gradient-text">
+                      <CountUp
+                        from={0}
+                        to={8}
+                        duration={1.2}
+                        className="count-up-text"
+                      />
+                    </span>
+                  </div>
                   <div className="stat-label">Subjects Mastered</div>
                 </div>
                 <div className="stat-item">
-                  <div className="stat-number">156</div>
+                  <div className="stat-number">
+                    <span className="gradient-text">
+                      <CountUp
+                        from={0}
+                        to={156}
+                        duration={1.2}
+                        className="count-up-text"
+                      />
+                    </span>
+                  </div>
                   <div className="stat-label">Hours Studied</div>
                 </div>
               </div>

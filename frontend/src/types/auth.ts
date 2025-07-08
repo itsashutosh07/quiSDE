@@ -33,4 +33,5 @@ export interface AuthContextType {
   verifyOTP: (otpData: OTPVerification) => Promise<boolean>;
   logout: () => void;
   resendOTP: (email: string) => Promise<boolean>;
+  resetOTP: () => void;
 }

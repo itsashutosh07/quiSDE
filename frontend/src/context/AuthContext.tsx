@@ -46,7 +46,8 @@ type AuthAction =
   | { type: "OTP_FAILURE"; payload: string }
   | { type: "LOGOUT" }
   | { type: "CLEAR_ERROR" }
-  | { type: "INCREMENT_OTP_ATTEMPTS" };
+  | { type: "INCREMENT_OTP_ATTEMPTS" }
+  | { type: "RESET_OTP" };
 
 // Reducer
 const authReducer = (state: AuthState, action: AuthAction): AuthState => {
@@ -75,6 +76,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
     case "OTP_SENT":
       return {
         ...state,
+        isLoading: false,
         otpSent: true,
         error: null,
       };
@@ -108,6 +110,13 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
         ...state,
         otpAttempts: state.otpAttempts + 1,
       };
+    case "RESET_OTP":
+      return {
+        ...state,
+        otpSent: false,
+        error: null,
+        otpAttempts: 0,
+      };
     default:
       return state;
   }
@@ -140,15 +149,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const login = async (credentials: LoginCredentials): Promise<boolean> => {
     dispatch({ type: "LOGIN_START" });
-
-    // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
     if (
       credentials.email === VALID_CREDENTIALS.email &&
       credentials.password === VALID_CREDENTIALS.password
     ) {
-      dispatch({ type: "LOGIN_SUCCESS", payload: MOCK_USER });
+      dispatch({ type: "OTP_SENT" });
       return true;
     } else {
       dispatch({
@@ -181,15 +187,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
+  // resendOTP does not actually send an OTP; only '888888' is accepted for verification.
   const resendOTP = async (email: string): Promise<boolean> => {
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 500));
-
-    if (email === VALID_CREDENTIALS.email) {
-      dispatch({ type: "OTP_SENT" });
-      return true;
-    }
-    return false;
+    dispatch({ type: "OTP_SENT" });
+    return true;
   };
 
   const logout = () => {
@@ -198,12 +201,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     dispatch({ type: "LOGOUT" });
   };
 
+  const resetOTP = () => {
+    dispatch({ type: "RESET_OTP" });
+  };
+
   const value: AuthContextType = {
     authState,
     login,
     verifyOTP,
     logout,
     resendOTP,
+    resetOTP,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
