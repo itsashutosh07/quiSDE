@@ -34,7 +34,6 @@ public class CategoryService {
                 .slug(category.getSlug())
                 .name(category.getName())
                 .description(category.getDescription())
-                .color(category.getColor())
                 .build();
     }
 } 

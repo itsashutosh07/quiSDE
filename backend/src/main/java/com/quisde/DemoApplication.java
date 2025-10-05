@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.quisde;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(scanBasePackages = {"com.example.demo", "com.quisde"})
+@SpringBootApplication(scanBasePackages = {"com.quisde"})
 @EntityScan("com.quisde.entity")
 @EnableJpaRepositories("com.quisde.repository")
 public class DemoApplication {
